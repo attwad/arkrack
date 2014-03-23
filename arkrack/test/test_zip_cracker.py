@@ -17,8 +17,4 @@ class TestZipCracker(unittest.TestCase):
 
 
 if __name__ == "__main__":
-  logging.basicConfig(
-      level=logging.ERROR,
-      format='[%(levelname)s] (%(threadName)-10s) %(message)s',
-  )
   unittest.main()
