@@ -1,6 +1,8 @@
 import unittest
-from arkrack.crackers import zip_cracker
 import os
+
+from arkrack.crackers import zip_cracker
+
 
 class TestZipCracker(unittest.TestCase):
 
