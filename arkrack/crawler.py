@@ -1,7 +1,7 @@
 import logging
+import re
 import urllib
 import urllib.request
-import re
 
 import bs4
 
