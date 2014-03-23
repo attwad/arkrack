@@ -1,7 +1,7 @@
 import zipfile
 import logging
 
-from crackers import cracker
+from arkrack.crackers import cracker
 
 class ZipCracker(cracker.Cracker):
 

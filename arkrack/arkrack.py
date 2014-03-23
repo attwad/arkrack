@@ -3,8 +3,8 @@ import os
 import logging
 import argparse
 
-from crackers import cracker_factory
-import crawler
+from arkrack.crackers import cracker_factory
+from arkrack import crawler
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser(

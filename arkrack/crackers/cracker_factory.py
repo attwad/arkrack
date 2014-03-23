@@ -1,6 +1,6 @@
 import logging
 
-from crackers import zip_cracker
+from arkrack.crackers import zip_cracker
 
 class CrackerFactory(object):
 
