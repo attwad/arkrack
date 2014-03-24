@@ -10,7 +10,7 @@ class Crawler(object):
 
   def __init__(self, archive_name):
     """Initializes the web crawler with the given archive name as origin.
-    
+
     Args:
       archive_name: The original archive name to use as a crawl search seed.
     """
@@ -18,7 +18,7 @@ class Crawler(object):
     self._logger = logging.getLogger(__name__)
     self._google_link_pattern = re.compile(r'^/url\?q=(.*?)&')
     self._words = set()
-  
+
   def crawl(self):
     self._logger.debug('Started crawling')
 
@@ -39,13 +39,17 @@ class Crawler(object):
             "User-Agent": ("Mozilla/5.0 (X11; U; Linux i686) "
                            "Gecko/20071127 Firefox/2.0.0.11"),
         })
-    url = urllib.request.urlopen(request)
-    return url
+    try: 
+      return urllib.request.urlopen(request)
+    except urllib.error.URLError as urle:
+      self._logger.debug('Error opening URL: %s', urle)
 
   def _get_google_search_results(self):
     self._logger.debug('Fetching results page from google.com...')
     url = self._fetch_url(
         'https://www.google.com/search?q="{}&safe=off"'.format(self._origin))
+    if not url:
+      return []
     links = self._get_links_from_page(
         url.read(), pattern=self._google_link_pattern)
     return [urllib.parse.unquote(link) for link in links]
